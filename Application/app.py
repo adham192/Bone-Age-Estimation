@@ -7,6 +7,7 @@ import json
 import numpy as np
 import tensorflow as tf
 from preprocessing import preprocess_image_from_bytes
+import urllib.request
 
 st.set_page_config(
     page_title="Bone Age Estimation System",
@@ -238,22 +239,19 @@ st.markdown("<div class='big-button'>", unsafe_allow_html=True)
 estimate = st.button("Estimate Bone Age")
 st.markdown("</div>", unsafe_allow_html=True)
 
-
+model_path = "Application/bone_age_InceptionV3_final_8_8_MAE.keras"
+url = "https://huggingface.co/Adham192/bone-age-estimation/resolve/main/bone_age_InceptionV3_final_8_8_MAE.keras"
+json_path = "Application/normalisation_stats.json"
 @st.cache_resource
 def load_model_and_stats():
-    model_path = "Application/bone_age_InceptionV3_final_8_8_MAE.keras"
-    confirm_url = "https://drive.google.com/uc?export=download&id=1amkLQokqDAWR47tlfW66Hqlf_hjjHuhD&confirm=t"
     if not os.path.exists(model_path):
         with st.spinner("Loading model for the first time, please wait..."):
-            gdown.download(
-                confirm_url,
-                model_path,
-                quiet = False
-            )
+            urllib.request.urlretrieve(url, model_path)
+            st.success("Download complete!")
     
     model = tf.keras.models.load_model(model_path, compile=False)
     
-    with open("normalisation_stats.json") as f:
+    with open(json_path) as f:
         stats = json.load(f)
     
     return model, stats["BONEAGE_MEAN"], stats["BONEAGE_STD"]
