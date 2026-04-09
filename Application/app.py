@@ -248,7 +248,8 @@ def load_model_and_stats():
             gdown.download(
                 "https://drive.google.com/uc?id=1amkLQokqDAWR47tlfW66Hqlf_hjjHuhD",
                 model_path,
-                quiet=False
+                quiet = False,
+                fuzzy = True
             )
     
     model = tf.keras.models.load_model(model_path, compile=False)
