@@ -241,7 +241,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 @st.cache_resource
 def load_model_and_stats():
-    model_path = "bone_age_InceptionV3_final_8_8_MAE.keras"
+    model_path = "Application/bone_age_InceptionV3_final_8_8_MAE.keras"
     confirm_url = "https://drive.google.com/uc?export=download&id=1amkLQokqDAWR47tlfW66Hqlf_hjjHuhD&confirm=t"
     if not os.path.exists(model_path):
         with st.spinner("Loading model for the first time, please wait..."):
