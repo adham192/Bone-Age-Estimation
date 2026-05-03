@@ -9,6 +9,7 @@ import tensorflow as tf
 from preprocessing import preprocess_image_from_bytes
 import urllib.request
 
+url = "https://huggingface.co/Adham192/bone-age-estimation/resolve/main/bone_age_InceptionV3_final_8_8_MAE.keras"
 st.set_page_config(
     page_title="Bone Age Estimation System",
     layout="wide",
@@ -240,7 +241,6 @@ estimate = st.button("Estimate Bone Age")
 st.markdown("</div>", unsafe_allow_html=True)
 
 model_path = "Application/bone_age_InceptionV3_final_8_8_MAE.keras"
-url = "https://huggingface.co/Adham192/bone-age-estimation/resolve/main/bone_age_InceptionV3_final_8_8_MAE.keras"
 json_path = "Application/normalisation_stats.json"
 @st.cache_resource
 def load_model_and_stats():
