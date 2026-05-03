@@ -2,7 +2,7 @@
 
 An automated deep learning system that predicts a child's skeletal maturity from pediatric hand X-rays. The model takes an X-ray image and patient gender as input, and outputs an estimated bone age range in years and months.
 
-**Live App:** [Launch on Streamlit](YOUR_STREAMLIT_URL_HERE)
+**Live App:** [Launch on Streamlit](https://bone-age-estimation-gp3un9gf7nhfeudztmnzof.streamlit.app/)
 
 ---
 
